@@ -1,0 +1,6 @@
+.root{
+    &:hover{
+        transition: 3s ease-in-out 0s;
+        transform: rotate(-360deg);
+    }
+}

@@ -1,0 +1,48 @@
+.root{
+    align-items: left;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input{
+    border: 2px dashed rgba(0, 0, 0, 0.4);
+    font-size: 16px;
+    border-radius: 10px;
+    max-width: 400px;
+    padding: 12px 80px 12px 14px;
+    &:hover{
+        transition: 0.3s ease 0.1s;
+        border: 2px dashed #fe5f1e;
+    }
+}
+
+.clear{
+    position: absolute;
+    right: 10%;
+    top: 35%;
+}
+
+.lines{
+    &:after{
+        transform: rotate(45deg);
+        opacity: 0.3;
+        content: '';
+        position: absolute;
+        background-color: black;
+        width: 4px;
+        height: 18px;
+        border-radius: 6px;
+    }
+    &:before{
+        transform: rotate(-45deg);
+        opacity: 0.3;
+        content: '';
+        position: absolute;
+        background-color: black;
+        width: 4px;
+        height: 18px;
+        border-radius: 6px;
+
+    }
+}

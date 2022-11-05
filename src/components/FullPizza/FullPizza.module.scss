@@ -1,0 +1,37 @@
+.root{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.rootChild{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    &:last-child{
+        margin-bottom: 60px;
+    } 
+}
+
+.img{
+    width: 65%;
+    object-fit: contain;
+}
+.imgContainer{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.title{
+    font-size: 40px;
+    font-weight: 700;
+}
+.text{
+    text-align: center;
+}
+
+.price{
+    font-size: 22px;
+    text-align: center;
+}

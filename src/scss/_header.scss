@@ -1,0 +1,66 @@
+@import './variables';
+
+.header {
+  border-bottom: 1px solid $gray-line;
+  padding: 40px 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media(max-width: 660px){
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    @media(max-width: 660px){
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 20px 0;
+    }
+    img {
+      margin-right: 15px;
+      object-fit: contain;
+      @media(max-width: 660px){
+        max-width: 40%;
+        margin: 0 0 20px 0;
+        width: 50%;
+      }
+    }
+
+    h1 {
+      color: #181818;
+      font-size: 24px;
+      letter-spacing: 1%;
+      text-transform: uppercase;
+      font-weight: 800;
+      @media(max-width: 660px){
+        font-size: 36px;
+        text-align: center;
+      }
+    }
+
+    p {
+      color: #7b7b7b;
+      @media(max-width: 660px){
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+  }
+  &__cart{
+    
+    @media(max-width: 660px){
+      position: fixed;
+      z-index: 1000;
+      top: 12px;
+    }
+  }
+
+  
+}

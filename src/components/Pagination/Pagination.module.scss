@@ -1,0 +1,42 @@
+.root{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.paginate{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    li{
+        a{
+            margin-left: 10px;
+            padding: 15px 20px;
+            border-radius: 30px;
+            background-color: white;
+            border: 1px solid #fe5f1e;
+            cursor: pointer;  
+            &:hover{
+                transition: 0.3s ease 0s;
+                background-color: #fe5f1e;
+                color:white;
+            }
+        }
+        
+    }
+
+    :global{
+        .selected{
+            a{
+                background-color: #fe5f1e;
+                color: white;
+            }
+            
+        }
+        
+    }
+}
