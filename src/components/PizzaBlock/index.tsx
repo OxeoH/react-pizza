@@ -2,9 +2,12 @@ import React from "react";
 
 import {useDispatch, useSelector} from 'react-redux';
 import { Link } from "react-router-dom";
-import { addItem, CartItem, cartSelectorById } from "../../redux/slices/cartSlice";
+import { addItem, CartItemSlice, cartSelectorById } from "../../redux/slices/cartSlice";
 import styles from "./PizzaBlock.module.scss"
+
+
 export const pizzaTypes = ["тонкое", "традиционное"];
+export const pizzaSizes = [26, 30, 40];
 
 interface IPizzaBlock{
     id: string, 
@@ -23,13 +26,13 @@ const PizzaBlock: React.FC<IPizzaBlock> = ({id, title, price, imageUrl, sizes, t
     const addedCount = cartItem ? cartItem.count : 0
 
     const onAddPizzaClick = () => {
-        const item: CartItem ={
+        const item: CartItemSlice ={
             id,
             title,
             price,
             imageUrl,
-            types: pizzaTypes[pizzaType],
-            sizes: sizes[pizzaSize],
+            types: pizzaType,
+            sizes: pizzaSize,
             count: 0
         };
 

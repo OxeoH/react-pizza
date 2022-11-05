@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { addItem, removeItem, removeIndividual } from "../../redux/slices/cartSlice";
+import { addItem, removeItem, removeIndividual, CartItemSlice } from "../../redux/slices/cartSlice";
 import { useDispatch } from 'react-redux';
-import { pizzaTypes } from '../PizzaBlock';
+import { pizzaSizes, pizzaTypes } from '../PizzaBlock';
 
-type CartItemProps = {
+
+export type CartItemProps = {
   id: string, 
   imageUrl: string,
   title: string, 
@@ -14,7 +15,7 @@ type CartItemProps = {
   count: number,
 }
 
-const CartItem: React.FC<CartItemProps> = ({id, imageUrl, title, pizzaSize, pizzaType, price, count}) => {
+const CartItem: React.FC<CartItemSlice> = ({id, imageUrl, title, sizes, types, price, count}) => {
   
   const dispatch = useDispatch();
   
@@ -30,7 +31,7 @@ const CartItem: React.FC<CartItemProps> = ({id, imageUrl, title, pizzaSize, pizz
       </div>
       <div className="cart__item-info">
         <h3>{title}</h3>
-        <p>{pizzaType}, {pizzaSize} см.</p>
+        <p>{pizzaTypes[types]}, {pizzaSizes[sizes]} см.</p>
       </div>
       <div className="cart__item-count">
         <div className="button button--outline button--circle cart__item-count-minus" onClick={() => dispatch(removeItem(id))}> 
@@ -52,7 +53,7 @@ const CartItem: React.FC<CartItemProps> = ({id, imageUrl, title, pizzaSize, pizz
           </svg>
         </div>
         <b>{count}</b>
-        <div className="button button--outline button--circle cart__item-count-plus" onClick={() => dispatch(addItem({id, imageUrl, title, types: pizzaTypes[pizzaType], sizes: pizzaSize, price, count}))}>
+        <div className="button button--outline button--circle cart__item-count-plus" onClick={() => dispatch(addItem({id, imageUrl, title, types, sizes, price, count}))}>
           <svg
             width="10"
             height="10"

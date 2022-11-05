@@ -19,7 +19,7 @@ import Pagination from '../components/Pagination';
 //       Redux
 import { useSelector } from "react-redux";
 import { setCategoryId, setCurrentPage, filterSelector } from '../redux/slices/filterSlice'; //setFilterParams
-import { fetchPizzas, pizzasSelector } from '../redux/slices/pizzasSlice';
+import { fetchPizzas, PizzaItemSlice, pizzasSelector } from '../redux/slices/pizzasSlice';
 import NotFoundBlock from '../components/NotFoundBlock';
 import { useAppDispatch } from '../redux/store';
 
@@ -97,7 +97,7 @@ const Home: React.FC = () =>{
             <h2 className="content__title">Все пиццы</h2>
             {status === "error" ? (<NotFoundBlock errorMessage={errorText}/>) : (<><div className="content__items">
                 {
-                    status === "loading" ? itemsSkeletons : items.map((pizza: any) => <PizzaBlock key={pizza.id} {...pizza}/>)
+                    status === "loading" ? itemsSkeletons : items.map((pizza: PizzaItemSlice) => <PizzaBlock key={pizza.id} {...pizza}/>)
                 }
             </div><Pagination currentPage={currentPage} onChangePage={onChangePage}/></>)}
             
