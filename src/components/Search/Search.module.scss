@@ -3,6 +3,9 @@
     display: flex;
     align-items: center;
     position: relative;
+    @media(max-width: 1100px){
+        margin-bottom: 20px;
+    }
 }
 
 .input{

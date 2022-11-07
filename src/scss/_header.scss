@@ -3,11 +3,14 @@
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
-
+  
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media(max-width: 1100px){
+      flex-direction: column;
+    }
     @media(max-width: 660px){
       flex-wrap: wrap;
       justify-content: center;
@@ -17,6 +20,9 @@
 
   &__logo {
     display: flex;
+    @media(max-width: 1100px){
+      margin-bottom: 20px;
+    }
     @media(max-width: 660px){
       flex-direction: column;
       justify-content: center;
@@ -54,7 +60,6 @@
     }
   }
   &__cart{
-    
     @media(max-width: 660px){
       position: fixed;
       z-index: 1000;
