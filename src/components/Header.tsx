@@ -9,10 +9,23 @@ import Search from "./Search/index";
 
 
 
+
+
 const Header: React.FC = () =>{
     const location = useLocation();
     const {totalPrice, items} = useSelector(cartSelector);
     const totalSum = items.reduce((sum : number, item: CartItemSlice) => sum + item.count, 0);//                               Fix
+    const isMounted = React.useRef(false);
+
+
+    React.useEffect(() => {
+        if(isMounted.current){
+        const jsonItems = JSON.stringify(items);
+        localStorage.setItem('cart', jsonItems);
+        }
+        isMounted.current = true;
+    }, [items])
+    
 
     return (
         <div className="header">

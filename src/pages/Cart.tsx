@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import CartItem, { CartItemProps } from '../components/CartItem';
+import CartItem from '../components/CartItem';
 import CartEmpty from './CartEmpty';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,10 +9,12 @@ import { CartItemSlice, cartSelector, removeAll } from "../redux/slices/cartSlic
 
 const Cart: React.FC = () => {
   const {totalPrice, items} = useSelector(cartSelector);
+  
   const dispatch = useDispatch();
   //const errorMessage = "Упс...Сначала нужно что-нибудь заказать!"
   const totalSum = items.reduce((sum: number, item: CartItemSlice) => sum + item.count, 0);
   
+
   if(!items.length){
     return(<CartEmpty/>);
   }
