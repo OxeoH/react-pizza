@@ -9,3 +9,12 @@ export interface PizzaParams{
     category: number,
     rating: number
 }
+
+export type RequestProps = {
+    page: string,
+    limit: string,
+    category: string,
+    search: string,
+    order: string,
+    sortBy: string
+}

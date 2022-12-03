@@ -1,8 +1,7 @@
-import { Repository } from "typeorm";
+import { ILike, Repository } from "typeorm";
 import AppDataSource from "../data-source";
 import { Pizza } from "./pizza.entity";
-import { PizzaParams } from "./pizza.types";
-
+import { PizzaParams, RequestProps } from "./pizza.types";
 
 class PizzaService{
     pizzaRepository: Repository<Pizza>
@@ -11,9 +10,30 @@ class PizzaService{
         this.pizzaRepository = AppDataSource.getRepository<Pizza>(Pizza)
     }
 
-    public async getAllPizzas(){
-        const pizzas = await this.pizzaRepository.find()
-        return pizzas
+    public async getPizzasByParams(reqParams: RequestProps){
+        const {page, limit, category, search, order, sortBy} = reqParams
+        
+        const skipValue = ((+limit) * (+page - 1))
+
+        let queryProps = {
+            order: {
+                [sortBy]: order.toUpperCase()
+            },
+            skip: skipValue,
+            take: +limit,
+        }
+
+        if(+category > 0){
+            if(search !== ''){
+                queryProps = Object.assign({ where: {category: +category, title: ILike(`%${search}%`)}}, queryProps)  
+            }else{
+                queryProps = Object.assign({ where: {category: +category}}, queryProps)
+            }
+        }        
+
+        const pizzas = await this.pizzaRepository.find(queryProps)
+
+        return pizzas    
     }
 
     public async addPizza(pizzaInfo: PizzaParams){

@@ -1,14 +1,27 @@
 import PizzaService from "./pizza.service";
 import { Request, Response } from "express";
-import { PizzaParams } from "./pizza.types";
+import { PizzaParams, RequestProps } from "./pizza.types";
 
 class PizzaController{
     public async getPizzas(req: Request, res: Response){
         try {
-            const {currentPage, limit, category, sortBy, order, search} = req.query
-            console.log(req.query)
+            const {page, limit, category, sortBy, order, search} = req.query
+            const params = {
+                page,
+                limit,
+                category,
+                search,
+                order,
+                sortBy
+            } as RequestProps
 
-            const pizzas = await PizzaService.getAllPizzas();
+            for(let prop in params){
+                if(prop == null || prop == undefined){
+                    res.status(500).json({message: "Error: wrong request data(all parametes are requared)"})
+                }
+            }
+
+            const pizzas = await PizzaService.getPizzasByParams(params);
             
             res.json(pizzas)
         } catch (error) {
