@@ -1,0 +1,128 @@
+@mixin fields {
+    border: 1px solid #fe5f1e;
+    font-size: 16px;
+    border-radius: 10px;
+    max-width: 600px;
+    padding: 12px 80px 12px 14px;
+    &:hover{
+        transition: 0.2s ease 0.1s;
+        box-shadow: 5px 5px indianred;
+    }
+}
+
+@mixin payMethods{
+    color: black;
+    padding: 16px 20px;
+    border-radius: 20px;
+    background-color: #fe5d1e58;
+    border: 1px solid #fe5f1e;
+    &:hover{
+        transition: 0.2s ease 0.1s;
+        color: white;
+        background-color: #fe5f1e;
+    }
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    padding: 4rem;
+    background-color: white;
+    border-radius: 2rem;
+    border: 3px dashed #fe5f1e;
+}
+.fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 100px;
+}
+.field{
+    margin-bottom: 20px;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+.fieldName{
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.fieldInput{
+    @include fields();
+}
+.address{
+    @include fields();
+    min-width: 200px;
+    width: 400px;
+    resize: none;
+}
+.comment{
+    @include fields();
+    min-width: 200px;
+    width: 400px;
+    padding: 12px 30px 30px 12px;
+    resize: none;
+}
+.payments{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.paymentType{
+    @include payMethods();
+    
+}
+
+.selected{
+    @include payMethods();
+    background-color: #fe5f1e;
+    color: white;
+}
+
+.caption{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 36px;
+    letter-spacing: 1px;
+}
+.bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.button{
+    padding: 20px 30px;
+    background-color: #fe5f1e;
+    color: white;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    border-color: #fe5f1e;
+    &:hover{
+        transition: 0.3s ease-in 0s;
+        border-color: white;
+        background-color: #c53800;
+    }
+}
+.orderPrice{
+    font-size: 18px;
+    font-weight: 500;
+    span{
+        font-weight: 700;
+        color: #fe5f1e;
+        font-size: 20px;
+    }
+}

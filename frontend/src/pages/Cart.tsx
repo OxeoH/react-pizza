@@ -6,8 +6,11 @@ import CartEmpty from './CartEmpty';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { CartItemSlice, cartSelector, removeAll } from "../redux/slices/cartSlice";
+import OrderWindow from '../components/OrderWindow';
+
 
 const Cart: React.FC = () => {
+  const [formVisibility, setFormVisibility] = React.useState<boolean>(false)
   const {totalPrice, items} = useSelector(cartSelector);
   
   const dispatch = useDispatch();
@@ -19,7 +22,16 @@ const Cart: React.FC = () => {
     return(<CartEmpty/>);
   }
 
+  
+
+  const showModalWindow = () => {
+    setFormVisibility(!formVisibility)
+    formVisibility ? document.body.style.overflow = "hidden" : document.body.style.overflow = "visible";
+  }
+
   return (
+  <>
+    {formVisibility && (<OrderWindow setFormVisibility={setFormVisibility}/>)}
     <div className="container container--cart"> 
       <div className="cart">
           <div className="cart__top">
@@ -143,13 +155,14 @@ const Cart: React.FC = () => {
 
                 <span>Вернуться назад</span>
               </Link>
-              <button className="button pay-btn">
-                <span>Оплатить сейчас</span>
+              <button className="button pay-btn" onClick={() => showModalWindow()}>
+                <span>Оформить заказ</span>
               </button>
             </div>
           </div>
         </div>
     </div>
+    </>
   );
 }
 
