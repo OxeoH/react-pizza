@@ -45,19 +45,7 @@ const Home: React.FC = () =>{
         dispatch(setCurrentPage(num));
     }
 
-    // //          Effects
-    // React.useEffect(() => {
-    //     if(window.location.search){
-    //         const filterParams = qs.parse(window.location.search.substring(1));
-    //         const sortObj = sorts.find(sort => sort.sortType === filterParams.sortType);
-    //         //dispatch(setFilterParams(...filterParams, sortObj));
-    //     }
-    // }, []);
-
     const getPizzas = async() =>{
-        // const category = categoryId > 0 ? `&category=${categoryId}` : '';
-        // const search = searchValue ? `&search=${searchValue}` : '';
-        
         dispatch(fetchPizzas({categoryId, searchValue, sortType: sort.sortType, currentPage}));
     }
 
@@ -87,6 +75,7 @@ const Home: React.FC = () =>{
 
 
     const errorText = "Упс... Не удалось загрузить товары. Попробуйте позже!)"
+    const notFoundText = "Упс... Такое не готовим("
 
     return (
         <div className='container'>
@@ -94,13 +83,19 @@ const Home: React.FC = () =>{
                 <Categories activeId={categoryId} onCategoryClick={(activeIndex: number) => dispatch(setCategoryId(activeIndex))}/>
                 <Sort />
             </div>
+            
             <h2 className="content__title">Все пиццы</h2>
-            {status === "error" ? (<NotFoundBlock errorMessage={errorText}/>) : (<><div className="content__items">
+            {   
+                status === "error" ? (<NotFoundBlock errorMessage={errorText}/>) : (<><div className="content__items">
                 {
                     status === "loading" ? itemsSkeletons : items.map((pizza: PizzaItemSlice) => <PizzaBlock key={pizza.id} {...pizza}/>)
                 }
-            </div><Pagination currentPage={currentPage} onChangePage={onChangePage}/></>)}
-            
+                </div>
+                {
+                    items.length === 0 && (<NotFoundBlock errorMessage={notFoundText}/>)
+                }
+                <Pagination currentPage={currentPage} onChangePage={onChangePage}/></>)
+            }
         </div>
     )
 }

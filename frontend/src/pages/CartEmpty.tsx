@@ -16,6 +16,7 @@ const CartEmpty: React.FC = () => {
             <img src={emptyImg} alt="Empty cart" />
             <Link to="/" className="button button--black">
               <span>Вернуться назад</span>
+              {}
             </Link>
           </div>
         </div>
