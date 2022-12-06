@@ -13,6 +13,12 @@ const OrderWindow: React.FC<any> = ({setFormVisibility}) => {
     const sendOrder = async () => {
         alert("Order Send")
     }
+
+    React.useEffect(() => {
+        document.body.style.overflow = "hidden"
+        return () => {document.body.style.overflow = ''}
+    },  [])
+
   return (
     <>
         <div className={styles.container} onClick={() => setFormVisibility(false)}>
