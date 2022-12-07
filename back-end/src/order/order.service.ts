@@ -12,8 +12,12 @@ class OrderService{
 
     public async createNewOrder(orderInfo: CreateOrderParams): Promise<Order>{
         const newOrder = new Order
-        newOrder.clientId = orderInfo.clientId
+        newOrder.name = orderInfo.name
+        newOrder.phone = orderInfo.phone
+        newOrder.address = orderInfo.address
+        newOrder.comment = orderInfo.comment
         newOrder.description = orderInfo.description
+        newOrder.paymentType = orderInfo.paymentType
         newOrder.price = orderInfo.price
 
         const savedOrder = await this.orderRepository.save(newOrder)

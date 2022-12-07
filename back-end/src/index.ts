@@ -4,7 +4,6 @@ dotenv.config()
 import AppDataSource from "./data-source"
 import express from "express"
 import cors from 'cors'
-import clientRouter from "./client/client.router"
 import orderRouter from "./order/order.router"
 import pizzaRouter from "./pizza/pizza.router"
 
@@ -16,7 +15,6 @@ app.use(express.json())
 
 app.use(cors())
 
-app.use('/clients', clientRouter)
 app.use('/orders', orderRouter)
 app.use('/pizzas', pizzaRouter)
 

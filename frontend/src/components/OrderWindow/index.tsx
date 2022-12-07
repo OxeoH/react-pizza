@@ -23,10 +23,10 @@ const OrderWindow: React.FC<any> = ({setFormVisibility}) => {
     const [payMethod, setPayMethod] = React.useState<string>("card");
     const {totalPrice, items} = useSelector(cartSelector);
 
-    const sendOrder = createAsyncThunk<OrderInfo, OrderInfo>('orders/createOrder', async (orderParams) =>{
+    const sendOrder = async (orderParams: OrderInfo) =>{
         const {name, phone, address, comment, paymentType, price, description} = orderParams;
-    
-        const {data} = await axios.post<OrderInfo>(`http://localhost:8080/orders`,
+        
+        const {data} = await axios.post(`http://localhost:8080/orders`,
         {params: {
             description,
             name,
@@ -37,7 +37,7 @@ const OrderWindow: React.FC<any> = ({setFormVisibility}) => {
             paymentType
         }});
         return data;
-    });
+    };
 
     const createDescription = () =>{
         let description = ""
@@ -80,10 +80,8 @@ const OrderWindow: React.FC<any> = ({setFormVisibility}) => {
     const createOrder = async (e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
 
-        alert(JSON.stringify(form))
         try {
-            await sendOrder(form)
-            
+            sendOrder(form)
         } catch (error) {
             console.log(error);
             

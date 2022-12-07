@@ -1,7 +1,9 @@
-import { Client } from "../client/client.entity";
-
 export interface CreateOrderParams{
     description: string,
+    name: string,
+    phone: string,
+    address: string,
+    comment: string,
     price: number,
-    clientId: Client
+    paymentType: string
 }

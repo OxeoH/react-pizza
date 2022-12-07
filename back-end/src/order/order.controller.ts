@@ -5,9 +5,10 @@ import { CreateOrderParams } from "./order.types";
 class OrderController {
     public async createOrder(req: Request, res: Response){
         try{
-            const newOrder: CreateOrderParams = req.body
-            if(!newOrder.clientId){
-                res.status(400).json({message: "Error: Bad Request (There is no Client, ID is requared)"})
+            const newOrder: CreateOrderParams = req.body.params
+            
+            if(newOrder.name === "" || newOrder.phone === "" || newOrder.address === ""){
+                res.status(400).json({message: "Error: Bad Request (NAME, PHONE, ADDRESS are requared)"})
             }
 
             const createdOrder = await OrderService.createNewOrder(newOrder)

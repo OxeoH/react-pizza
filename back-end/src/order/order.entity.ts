@@ -1,6 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
-// import { Pizza } from "../entity/pizzaModel"
-import { Client } from "../client/client.entity"
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
 @Entity()
 export class Order {
@@ -8,14 +6,24 @@ export class Order {
     id: string
 
     @Column()
+    name: string
+
+    @Column()
+    phone: string
+
+    @Column()
+    address: string
+
+    @Column()
+    comment: string
+
+    @Column()
     description: string
+
+    @Column()
+    paymentType: string
 
     @Column()
     price: number
 
-    @ManyToOne(() => Client, (client) => client.id)
-    clientId: Client
-
-    // @Column()
-    // items: Pizza[]
 }
