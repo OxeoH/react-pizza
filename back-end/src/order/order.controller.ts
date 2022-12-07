@@ -1,20 +1,23 @@
 import { Request, Response } from "express";
 import OrderService from "./order.service";
 import { CreateOrderParams } from "./order.types";
+import OrderValidator from "./order.validation";
 
 class OrderController {
     public async createOrder(req: Request, res: Response){
         try{
+            const orderValidator = new OrderValidator
             const newOrder: CreateOrderParams = req.body.params
             
-            if(newOrder.name === "" || newOrder.phone === "" || newOrder.address === ""){
-                res.status(400).json({message: "Error: Bad Request (NAME, PHONE, ADDRESS are requared)"})
+            if(orderValidator.validateOrderParams(newOrder)){
+                const createdOrder = await OrderService.createNewOrder(newOrder)
+                res.status(200).json(createdOrder)
+            }else{
+                res.status(400).json({message: "Error: Bad Request"})
             }
-
-            const createdOrder = await OrderService.createNewOrder(newOrder)
-            res.json(createdOrder)
+            
         }catch(e){
-            res.status(500).json({message: "Server Error"})
+            res.status(500).json({message: "Unexpected Server Error"})
         }
     }
 
