@@ -12,7 +12,7 @@ interface IFullPizza{
 }
 
 const FullPizza: React.FC = () => {
-    const params = useParams();
+    
     const navigate = useNavigate();
     const [fullPizza, setFullPizza] = React.useState<IFullPizza>();
     const errorMessage = "Ошибка 404: Не удалось загрузить информацию!";
@@ -20,8 +20,10 @@ const FullPizza: React.FC = () => {
     React.useEffect(() => {
         async function getFullPizza(){
             try{
-                const {data} = await axios.get(`https://6348936e0b382d796c73f4b1.mockapi.io/pizzas/${params.id}`)
-                setFullPizza(data);
+                // const {data} = await axios.get(`http://localhost:8080/pizzas/`, {params:{
+                //     id: 
+                // }})
+                // setFullPizza(data);
             }catch(error){
                 setTimeout(() => navigate('/'), 3000);
             }

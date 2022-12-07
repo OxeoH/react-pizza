@@ -26,7 +26,6 @@ const Cart: React.FC = () => {
 
   const showModalWindow = () => {
     setFormVisibility(!formVisibility)
-    formVisibility ? document.body.style.overflow = "hidden" : document.body.style.overflow = "visible";
   }
 
   return (
