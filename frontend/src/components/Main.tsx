@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
-import FullPizza from './FullPizza/';
+import FullPizza from './FullPizza';
 import Cart from '../pages/Cart';
 
 import '../scss/app.scss';

@@ -16,5 +16,5 @@
     "strictBindCallApply": true
   },
   "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/__tests__/pizza.validation.test.ts"]
 }
