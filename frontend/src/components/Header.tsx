@@ -34,7 +34,7 @@ const Header: React.FC = () =>{
                     <div className="header__logo">
                         <img width='38' src={pizzaLogo} alt="Pizza logo"/>
                         <div>
-                            <h1>Kurwa Pizza Ja Perdole</h1>
+                            <h1>React Pizza</h1>
                             <p>самая вкусная пицца во вселенной</p>
                         </div>
                     </div>

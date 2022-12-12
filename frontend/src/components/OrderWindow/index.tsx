@@ -26,7 +26,7 @@ const OrderWindow: React.FC<any> = ({setFormVisibility}) => {
     const sendOrder = async (orderParams: OrderInfo) =>{
         const {name, phone, address, comment, paymentType, price, description} = orderParams;
         
-        const {data} = await axios.post(`http://localhost:8080/orders`,
+        await axios.post(`http://localhost:8080/orders`,
         {params: {
             description,
             name,
@@ -35,8 +35,13 @@ const OrderWindow: React.FC<any> = ({setFormVisibility}) => {
             comment,
             price,
             paymentType
-        }});
-        return data;
+        }})
+        .then(() => {
+            alert("Заказ успешно оформлен. Скоро менеджер с вами свяжется. Спасибо, что выбрали нас!")
+        })
+        .catch(() => {
+            alert("Ошибка создания заказа: Отправлены некорректные данные!")
+        })
     };
 
     const createDescription = () =>{
