@@ -42,11 +42,11 @@ const badPizzaParams = {
 }
 
 describe("All params validation", () => {
-    test("validatePizzaParams goodParams test", () => {
+    test("ValidatePizzaParams goodParams test", () => {
         expect(pizzaValidator.validatePizzaParams(goodPizzaParams)).toBeTruthy()
     })
 
-    test("validatePizzaParams badParams test", () => {
+    test("ValidatePizzaParams badParams test", () => {
         expect(pizzaValidator.validatePizzaParams(badPizzaParams)).toBeFalsy()
     })
 
@@ -99,12 +99,12 @@ describe("Testing array from pizza params validator", () => {
         expect(pizzaValidator.validatePizzasParamsArray([4, 0, 4], [1,2,3])).toBeFalsy()
     })
 
-    test("Testing array validation with good array different sizes", () => {
+    test("Testing array validation with bad array different sizes", () => {
         expect(pizzaValidator.validatePizzasParamsArray([5, 8], [1, 2, 3])).toBeFalsy()
     })
 
     test("Testing array validation with good array", () => {
-        expect(pizzaValidator.validatePizzasParamsArray([1, 2], [1, 2, 3])).toBeTruthy()
+        expect(pizzaValidator.validatePizzasParamsArray([1, 2, 3], [1, 2, 3])).toBeTruthy()
     })
 
     test("Testing array validation with good array different sizes", () => {

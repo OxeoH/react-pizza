@@ -26,11 +26,11 @@ const badOrderParams: CreateOrderParams = {
 }
 
 describe("All order params validation", () => {
-    test("validate goodParams test", () => {
+    test("Validate goodOrderParams test", () => {
         expect(orderValidator.validateOrderParams(goodOrderParams)).toBeTruthy()
     })
 
-    test("validate badParams test", () => {
+    test("Validate badOrderParams test", () => {
         expect(orderValidator.validateOrderParams(badOrderParams)).toBeFalsy()
     })
 
@@ -46,11 +46,11 @@ describe("Testing order params string length validator", () => {
     })
 
     test("Testing bad order address", () => {
-        expect(orderValidator.validateStringLength(badOrderParams.description)).toBeFalsy()
+        expect(orderValidator.validateStringLength(badOrderParams.address)).toBeFalsy()
     })
 
     test("Testing good order address", () => {
-        expect(orderValidator.validateStringLength(goodOrderParams.description)).toBeTruthy()
+        expect(orderValidator.validateStringLength(goodOrderParams.address)).toBeTruthy()
     })
 })
 
@@ -104,11 +104,11 @@ describe("Integration tests", () => {
     const goodTestUrl = "https://www.google.com/"
     const badTestUrl = "https://"
 
-    test("Testing good url for mask then for length", () => {
+    test("Testing good url for mask by PizzaValidator then for length by OrderValidator", () => {
         expect(orderValidator.validateStringLength(pizzaValidator.validateImageUrl(goodTestUrl, "https://") ? goodTestUrl : "")).toBeTruthy()
     })
 
-    test("Testing bad url for mask then for length", () => {
+    test("Testing bad url for mask by PizzaValidator then for length by OrderValidator", () => {
         expect(orderValidator.validateStringLength(pizzaValidator.validateImageUrl(badTestUrl, "https://") ? badTestUrl : "")).toBeFalsy()
     })
 })

@@ -1,6 +1,9 @@
 import PizzaService from "./pizza.service";
 import { Request, Response } from "express";
 import { PizzaParams, RequestProps } from "./pizza.types";
+import PizzaValidator from "./pizza.validation";
+
+const pizzaValidator = new PizzaValidator()
 
 class PizzaController{
     public async getPizzas(req: Request, res: Response){
@@ -32,13 +35,13 @@ class PizzaController{
     public async addNewPizza(req: Request, res: Response){
         try{
             const newPizza: PizzaParams = req.body
-            for(let prop in newPizza){
-                if(prop.length <= 0){
-                    res.status(400).json({message: "Error: Bad Request (All props of object are requared)"})
-                }
+
+            if(pizzaValidator.validatePizzaParams(newPizza)){
+                const addedPizza = await PizzaService.addPizza(newPizza)
+                res.status(200).json(addedPizza)
+            }else{
+                res.status(400).json({message: "Error: Bad Request"})
             }
-            const addedPizza = await PizzaService.addPizza(newPizza)
-            res.json(addedPizza)
         }catch(e){
             res.status(500).json({message: "Server Error"})
         }
