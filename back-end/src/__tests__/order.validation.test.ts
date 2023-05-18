@@ -31,7 +31,7 @@ describe("All order params validation", () => {
     })
 
     test("Validate badOrderParams test", () => {
-        expect(orderValidator.validateOrderParams(badOrderParams)).toBeFalsy()
+        expect(orderValidator.validateOrderParams(goodOrderParams)).toBeFalsy()
     })
 
 })

@@ -104,21 +104,25 @@ const OrderWindow: React.FC<any> = ({setFormVisibility}) => {
                     <li className={styles.field}>
                         <div className={styles.fieldName}>Ваше имя *</div>
                         <input id="name" type="text" className={styles.fieldInput} placeholder="Егор" onChange={(event)=>handleChange(event)}/>
+                        <div>От 3 символов</div>
                     </li>
                     <li className={styles.field}>
                         <div className={styles.fieldName}>Номер телефона *</div>
-                        <input id="phone" className={styles.fieldInput} type="text" placeholder='+375(XX)123-45-67' onChange={(event)=>handleChange(event)}/>
+                        <input id="phone" className={styles.fieldInput} type="text" placeholder='+375XX1234567' onChange={(event)=>handleChange(event)}/>
+                        <div>+ и 12 цифр</div>
                     </li>
                     <li className={styles.field}>
                         <div className={styles.fieldName}>Адрес доставки *</div>
                         <textarea id="address" className={styles.address} placeholder='улица Сурганова 37/2, кв. 12' onChange={(event)=>handleChange(event)}/>
+                        <div>От 20 символов</div>
                     </li>
                     <li className={styles.field}>
                         <div className={styles.fieldName}>Комментарии к заказу</div>
                         <textarea id="comment" className={styles.comment} placeholder="Побольше салфеток и побыстрее!" onChange={(event)=>handleChange(event)}/>
+                        <div>Не обязательно</div>
                     </li>
                     <li className={styles.field}>
-                        <div className={styles.fieldName}>Выберите способ оплаты</div>
+                        <div className={styles.fieldName}>Выберите способ оплаты *</div>
                         <ul className={styles.payments}>
                             <li className={payMethod === "card" ? styles.selected : styles.paymentType} onClick={() => changePayMethod("card")}>Картой курьеру</li>
                             <li className={payMethod === "cash" ? styles.selected : styles.paymentType} onClick={() => changePayMethod("cash")}>Наличными курьеру</li>

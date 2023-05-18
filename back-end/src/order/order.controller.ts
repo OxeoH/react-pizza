@@ -7,7 +7,7 @@ class OrderController {
     public async createOrder(req: Request, res: Response){
         try{
             const orderValidator = new OrderValidator
-            const newOrder: CreateOrderParams = req.body.params
+            const newOrder: CreateOrderParams = req.body
             
             if(orderValidator.validateOrderParams(newOrder)){
                 const createdOrder = await OrderService.createNewOrder(newOrder)
