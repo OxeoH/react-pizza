@@ -8,7 +8,9 @@
 ### `Typescript`
 ### `MobX`
 
-## You can also check the [deployment](https://main--golden-sunshine-f153e1.netlify.app/).
+# Deploy
+This project was deployed on free hosting **Netlify**. 
+You can follow the link and try it: [deployment](https://main--golden-sunshine-f153e1.netlify.app/)
 
 # Getting Started with Create React App
 
