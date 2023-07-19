@@ -10,7 +10,7 @@
 
 # Deploy
 This project was deployed on free hosting **Netlify**. 
-You can follow the link and try it: [deployment](https://main--golden-sunshine-f153e1.netlify.app/)
+You can follow the link and try it: [deployment](https://effortless-salamander-e2e121.netlify.app/)
 
 # Getting Started with Create React App
 
